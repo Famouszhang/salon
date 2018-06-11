@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Amazing Amy's Barbershop</title>
+</head>
+<body>
+      <h1>funny haircut</h1>
+    <p>Your convenience is our duty</p>
+
+    <!-- Item 1 -->
+    <p>sally : 10000 RMB</p>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526270855147&di=baf1fcf7fd30446f497607811410f6e9&imgtype=0&src=http%3A%2F%2Fimg.25pp.com%2Fuploadfile%2Fsoft%2Fimages%2F2015%2F0310%2F20150310042818707.jpg">
+    <p>alex : 10000 RMB</p>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526874918077&di=062dc8a695f4fd45c36327ef84de7ee3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D5967f5c73dd3d539d530078353ff8c3c%2Fa2cc7cd98d1001e9a98cc136b30e7bec54e79753.jpg">
+    <p>pheobe : 1000000000 RMB</p>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526875176352&di=1cfd2ec785ced5b785fa8f873a7717b4&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fphotoblog%2F1508%2F11%2Fc22%2F11029178_1439302267207_mthumb.jpg">
+    <!-- User Form -->
+    <h1>Place Your Order</h1>
+    <form action="{% url 'haircut:home_page' %} " method="POST">
+        {% csrf_token %}
+        <input type="text" name="customer_name" placeholder="Please Type Your Name"><br>
+        <input type="time" name="time" placeholder="Type The Time Your Desire"><br>
+        <input type="date" name="date" placeholder="Type The Time Your Desire"><br>
+        <input type="text" name="barber" placeholder="What Barber Do You Want"><br>
+        <input type="submit" value="Buy Now!">
+    </form>
+
+    <h1>Your Order</h1>
+    {% for appointment in appointments %}
+    <p>Time: {{appointment.time}}</p>
+    <p>Date: {{appointment.date}}</p>
+    <p>Customer Name: {{appointment.customer_name}}</p>
+    <p>Barber Desired: {{appointment.barber}}</p> <hr>
+
+    {% endfor %}
+
+</body>
+</html>
